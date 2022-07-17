@@ -42,6 +42,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'backend'
+    # 'django_saml2_auth'
 ]
 
 MIDDLEWARE = [
@@ -59,7 +61,8 @@ ROOT_URLCONF = 'robotrainer.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [os.path.join(BASE_DIR, 'templates'),
+        os.path.join(BASE_DIR, 'backend', 'templates', 'backend')],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -108,6 +111,35 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
+# SAML2_AUTH = {
+#     'METADATA_AUTO_CONF_URL':'https://dev-46668607.okta.com/app/dev-46668607_raas_1/exk5caf4r7hA2DHDr5d7/sso/saml/metadata',
+#     'DEFAULT_NEXT_URL': '/backend/',
+#     'CREATE_USER': 'False',
+#     # Create a new Django user when a new user logs in. In our case we do
+#     # not create new.
+#     # 'NEW_USER_PROFILE': {
+#     # 'USER_GROUPS': [], # The default group name when a new user logs in
+#     # 'ACTIVE_STATUS': True, # The default active status for new users
+#     # 'STAFF_STATUS': True, # The staff status for new users
+#     # 'SUPERUSER_STATUS': False, # The superuser status for new users
+#     # },
+#     # the value of keys below should be same as on the okta setting
+#     'ATTRIBUTES_MAP': {
+#         'FirstName': 'FirstName',
+#         'LastName' : 'LastName',
+#         'Email'    : 'Email'
+#     },
+#     # triggers can be used to perform various task. Before_login is triggered right when the saml
+#     # response comes form idp
+#     'TRIGGER': {
+#     # # 'CREATE_USER': 'path.to.your.new.user.hook.method',
+#         'BEFORE_LOGIN': 'Sample-Project_dashboard.views.my_view',
+#     },
+#     'ASSERTION_URL': 'http://localhost:8000', # Custom URL to validate incoming SAML requests against
+#     'ENTITY_ID': 'http://localhost:8000/saml2_auth/acs/', # Populates the Issuer element in authn request
+#     'NAME_ID_FORMAT': "urn:oasis:names:tc:SAML:1.1:nameid-format:emailAddress", # Sets the Format property of authn NameIDPolicy element
+# }
+
 
 # Internationalization
 # https://docs.djangoproject.com/en/3.2/topics/i18n/
@@ -127,6 +159,10 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.2/howto/static-files/
 
 STATIC_URL = '/static/'
+STATICFILES_DIRS = (
+    os.path.join(BASE_DIR, 'static'),
+)
+STATIC_ROOT = os.path.join(BASE_DIR, 'static_files')
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
