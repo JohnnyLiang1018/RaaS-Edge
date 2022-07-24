@@ -25,13 +25,14 @@ load_dotenv(find_dotenv())
 # See https://docs.djangoproject.com/en/3.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-w*aurx90op#v4j#70oh!%hlqxhfhu4a%jaf^a!6*$kzyiqcf33'
+SECRET_KEY = os.environ.get("SECRET_KEY")
+#SECRET_KEY = 'django-insecure-w*aurx90op#v4j#70oh!%hlqxhfhu4a%jaf^a!6*$kzyiqcf33'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
 
-ALLOWED_HOSTS = ["127.0.0.1", "localhost",".herokuapp.com"]
+ALLOWED_HOSTS = ["127.0.0.1", "localhost", ".herokuapp.com"]
 
 
 # Application definition
