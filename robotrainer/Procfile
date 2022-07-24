@@ -1,1 +1,1 @@
-web: gunicorn robotrainer.wsgi.py --log-file -
+web: gunicorn $WSGI_PATH:application --log-file -
