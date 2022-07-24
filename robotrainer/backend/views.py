@@ -23,8 +23,4 @@ def home(request):
 def save_robot_actions(request):
     print(request.body)
     print(request.POST.dict())
-    # test = json.loads(request.POST.dict())
-    # print(test)
-    # print(test['number_of_robots'])
-    # print(request.body["number_of_robots"])
     return HttpResponse(request.POST.dict()["number_of_robots"])
