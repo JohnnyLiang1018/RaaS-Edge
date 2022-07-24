@@ -1,13 +1,30 @@
 from django.http import HttpResponse
 from django.shortcuts import render
-from .models import CustomJsonForm
-from django import forms
+from .models import InputForm
+from django.views.decorators.csrf import csrf_exempt
+from django.views.generic import CreateView
+
+class InputFormCreateView(CreateView):
+    model = InputForm
+    fields = ('number_of_robots', 'number_of_loops', 'list_of_commands')
+
+    def get_form(self, form_class=None):
+        form = super(InputFormCreateView, self).get_form(form_class)
+        form.fields['number_of_robots'].required = True
+        form.fields['number_of_loops'].required = True
+        form.fields['list_of_commands'].required = True
+
+        return form
 
 def home(request):
     return render(request, 'homepage.html')
 
-
-def notebook(request):
-    return render(request, 'json_input.html', {'form': CustomJsonForm()} )
-    # return render(request, 'notebook.html')
-# Create your views here.
+@csrf_exempt
+def save_robot_actions(request):
+    print(request.body)
+    print(request.POST.dict())
+    # test = json.loads(request.POST.dict())
+    # print(test)
+    # print(test['number_of_robots'])
+    # print(request.body["number_of_robots"])
+    return HttpResponse(request.POST.dict()["number_of_robots"])
