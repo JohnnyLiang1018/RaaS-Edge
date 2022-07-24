@@ -1,2 +1,2 @@
-web: gunicorn robotrainer.wsgi.py
+web: gunicorn robotrainer.wsgi
 heroku ps:scale web=1
