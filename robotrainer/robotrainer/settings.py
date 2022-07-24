@@ -28,10 +28,10 @@ load_dotenv(find_dotenv())
 SECRET_KEY = 'django-insecure-w*aurx90op#v4j#70oh!%hlqxhfhu4a%jaf^a!6*$kzyiqcf33'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = [".herokuapp.com"]
 
 
 # Application definition
