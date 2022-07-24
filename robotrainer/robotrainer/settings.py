@@ -31,7 +31,7 @@ SECRET_KEY = 'django-insecure-w*aurx90op#v4j#70oh!%hlqxhfhu4a%jaf^a!6*$kzyiqcf33
 DEBUG = False
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
 
-ALLOWED_HOSTS = ["127.0.0.1", ".herokuapp.com"]
+ALLOWED_HOSTS = ["127.0.0.1", "localhost",".herokuapp.com"]
 
 
 # Application definition
