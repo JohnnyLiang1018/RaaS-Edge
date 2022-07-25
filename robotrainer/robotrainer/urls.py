@@ -15,7 +15,6 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
-import django_saml2_auth.views
 
 urlpatterns = [
     # path('saml2_auth/', include('django_saml2_auth.urls')),
