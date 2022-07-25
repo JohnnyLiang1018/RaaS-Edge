@@ -15,12 +15,11 @@ Including another URLconf
 """
 from django.urls import path, include
 from . import views
-# from backend.views import InputFormCreateView
+from backend.views import InputFormCreateView
 
 urlpatterns = [
     path('', views.home, name="home"),
-    # path('notebook/', views.notebook, name="notebook"),
-    # path('customer_data/', InputFormCreateView.as_view(), name="customer_data"),
+    path('customer_data/', InputFormCreateView.as_view(), name="customer_data"),
     # path('customer_data/save_data', views.save_robot_actions, name="save_robot_actions")
     # path('/', include('api.urls'))
 ]

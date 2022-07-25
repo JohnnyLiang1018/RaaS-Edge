@@ -2,19 +2,19 @@ from django.http import HttpResponse
 from django.shortcuts import render
 from .models import InputForm
 from django.views.decorators.csrf import csrf_exempt
-# from django.views.generic import CreateView
+from django.views.generic import CreateView
 
-# class InputFormCreateView(CreateView):
-#     model = InputForm
-#     fields = ('number_of_robots', 'number_of_loops', 'list_of_commands')
+class InputFormCreateView(CreateView):
+    model = InputForm
+    fields = ('number_of_robots', 'number_of_loops', 'list_of_commands')
 
-#     def get_form(self, form_class=None):
-#         form = super(InputFormCreateView, self).get_form(form_class)
-#         form.fields['number_of_robots'].required = True
-#         form.fields['number_of_loops'].required = True
-#         form.fields['list_of_commands'].required = True
+    def get_form(self, form_class=None):
+        form = super(InputFormCreateView, self).get_form(form_class)
+        form.fields['number_of_robots'].required = True
+        form.fields['number_of_loops'].required = True
+        form.fields['list_of_commands'].required = True
 
-#         return form
+        return form
 
 def home(request):
     return render(request, 'homepage.html')
