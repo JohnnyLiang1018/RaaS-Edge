@@ -19,8 +19,8 @@ class InputFormCreateView(CreateView):
 def home(request):
     return render(request, 'homepage.html')
 
-# @csrf_exempt
-# def save_robot_actions(request):
-#     print(request.body)
-#     print(request.POST.dict())
-#     return HttpResponse(request.POST.dict()["number_of_robots"])
+@csrf_exempt
+def save_robot_actions(request):
+    print(request.body)
+    print(request.POST.dict())
+    return HttpResponse(request.POST.dict()["number_of_robots"])
