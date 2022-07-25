@@ -45,7 +45,6 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'backend',
-    'django_jsonforms',
     'crispy_forms'
     # 'django_saml2_auth'
 ]
