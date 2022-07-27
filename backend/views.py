@@ -55,4 +55,5 @@ def save_vector_data(request):
 
 def send_flask_data(json_data):
     response = requests.post(ngrok_flask_hostname, json=json_data)
-    return response.content
+    return HttpResponse(response, content_type="application/json")
+    # return response.content
