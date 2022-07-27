@@ -16,10 +16,14 @@ Including another URLconf
 from django.urls import path, include
 from . import views
 from backend.views import InputFormCreateView
+from backend.views import VectorFormCreateView
 
 urlpatterns = [
     path('', views.home, name="home"),
     path('customer_data/', InputFormCreateView.as_view(), name="customer_data"),
-    path('customer_data/save_data', views.save_robot_actions, name="save_robot_actions")
+    path('customer_data/save_data', views.save_robot_actions, name="save_robot_actions"),
+    path('vector_data/', VectorFormCreateView.as_view(), name="vector_data"),
+    path('vector_data/save_vector_data', views.save_vector_data, name="save_vector_data")
+
     # path('/', include('api.urls'))
 ]

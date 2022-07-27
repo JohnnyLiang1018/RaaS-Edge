@@ -1,5 +1,6 @@
 from statistics import mode
 from django.db import models
+from django import forms
 
 
 class RobotInfo(models.Model):
@@ -23,6 +24,14 @@ class InputForm(models.Model):
      number_of_robots = models.IntegerField(blank=True, null=True)
      number_of_loops = models.IntegerField(blank=True, null=True)
      list_of_commands = models.CharField(max_length=500)
+    
+
+     def __str__(self) -> str:
+         return super().__str__()
+
+class VectorForm(models.Model):
+     vector_text_box = models.TextField(max_length=500)
+     #vector_text_box = forms.CharField(widget=forms.Textarea)
     
 
      def __str__(self) -> str:
