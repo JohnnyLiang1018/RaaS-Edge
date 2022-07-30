@@ -5,7 +5,6 @@ from django.views.decorators.csrf import csrf_exempt
 from django.views.generic import CreateView
 import json
 import requests
-import numpy as np
 
 ngrok_flask_execute = "https://613a-2601-646-8a00-8430-00-84e3.ngrok.io/execute"
 ngrok_flask_policy = "https://f33a-2601-647-5580-8930-00-9169.ngrok.io/runPolicy"
@@ -41,7 +40,6 @@ def save_robot_actions(request):
     print(request.POST.dict())
     print(type(request.POST.dict()["list_of_commands"]))
     array_commands = request.POST.dict()["list_of_commands"].split(",")
-    list_of_commands = np.array(array_commands)
     json_list = json.dumps(array_commands)
     print(list_of_commands)
     print(type(list_of_commands))
