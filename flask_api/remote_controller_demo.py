@@ -11,19 +11,19 @@ import threading
 #Ryan's part
 import pymysql
 import random
-conn = pymysql.connect(host='raas-data.c9q9qv3ngmbu.us-east-2.rds.amazonaws.com',user='admin',password='gK?7Rrg-5hHtS?s12',database='raas-data')
-cursor = conn.cursor()
+# conn = pymysql.connect(host='raas-data.c9q9qv3ngmbu.us-east-2.rds.amazonaws.com',user='admin',password='gK?7Rrg-5hHtS?s12',database='raas-data')
+# cursor = conn.cursor()
 
-def com(x,n,bid):
-    randomList2 = [-1,0,1]
-    insert_query = '''
-                INSERT INTO dataTest VALUES
-                (%s,%s,%s,%s);
-               
-                '''
-    values = (x[0],x[1],n,bid)
-    cursor.execute(insert_query,values)
-    conn.commit()
+# def com(x,n,bid):
+#    randomList2 = [-1,0,1]
+#    insert_query = '''
+#                INSERT INTO dataTest VALUES
+#                (%s,%s,%s,%s);
+#               
+#                '''
+#    values = (x[0],x[1],n,bid)
+#    cursor.execute(insert_query,values)
+#    conn.commit()
 #Ryan's part end
 app = Flask(__name__)
 
@@ -38,14 +38,14 @@ def execute():
     print(str(len(toys)) + '/' + str(len(['SB-F6D6'])) +' robots found')
     print("Getting batch number...")
     fetch_query = 'select id from seq;'
-    cursor.execute(fetch_query)
-    bid = cursor.fetchone()
-    print(bid[0])
-    batch_id = bid[0] + 1
-    batch_query = 'update seq set id = ' + str(batch_id)
-    cursor.execute(batch_query)
-    conn.commit()
-    print("Batch number "+ str(batch_id)+"!")
+    # cursor.execute(fetch_query)
+    # bid = cursor.fetchone()
+    # print(bid[0])
+    # batch_id = bid[0] + 1
+    # batch_query = 'update seq set id = ' + str(batch_id)
+    # cursor.execute(batch_query)
+    # conn.commit()
+    # print("Batch number "+ str(batch_id)+"!")
     for toy in toys:
         thread = threading.Thread(target=run_the_robot, args=(toy, input['commands']))
         thread.start()
@@ -84,7 +84,7 @@ def run_policy():
                     droid.roll(270, 80, 1.1)
                     time.sleep(2)
                 else:
-                    droid.stop_roll();
+                    droid.stop_roll()
                     break
             print(str(droid.get_location()['x']) + ' ' + str(droid.get_location()['y']))
             droid.stop_roll()
@@ -140,7 +140,7 @@ def run_the_robot(toy, commands):
                 #Ryan's part
                 pre_loc = list(droid.get_location().values())
                 loc = [ '%.2f' % elem for elem in pre_loc ]
-                com(loc,toy.name,batch_id)
+                # com(loc,toy.name,batch_id)
                 #Ryan's part end
             print(toy.name + ' stopped!')
     except Exception as e:
